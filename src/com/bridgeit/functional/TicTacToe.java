@@ -1,18 +1,20 @@
 /******************************************************************************
- *  Purpose: permutations of a string
+ *  Purpose: Tic-Tac-Toe game
  *
  *  @author  BridgeLabz
  *  @version 1.0
- *  @since   18-10-2019
+ *  @since   19-10-2019
  *
  ******************************************************************************/
 package com.bridgeit.functional;
 
-public class StringPermutations {
+import com.bridgeit.utility.Utility;
+
+public class TicTacToe {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Utility utility = new Utility();
+		utility.playTicTacToe();
 	}
 
 }
