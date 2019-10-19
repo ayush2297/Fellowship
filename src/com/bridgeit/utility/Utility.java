@@ -616,5 +616,5 @@ public class Utility {
 	public double calculateWindChill(Double temperature, Double speed) {
 		return ( 35.4 +(0.6215*temperature - 35.75) * Math.pow(speed, 0.16));
 	}
-	
+
 }
