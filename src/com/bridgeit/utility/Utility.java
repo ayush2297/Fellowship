@@ -14,7 +14,7 @@ public class Utility {
 	static Random random = new Random();
 	static String[][] ticTacToeBoard = new String [3][3];
 	
-	Clock clock = Clock.systemDefaultZone();
+	static Clock clock = Clock.systemDefaultZone();
 	HashSet<String> HsForCoupons = new HashSet<String>();
 	PrintWriter printObj = new PrintWriter(System.out,true);
 	Scanner sc = new Scanner(System.in);
@@ -368,7 +368,7 @@ public class Utility {
 	 * 
 	 * @return	time in milliseconds
 	 */
-	public double timeInMillis() {
+	public static double timeInMillis() {
 		return clock.millis();
 	}
 

@@ -1,9 +1,10 @@
 /******************************************************************************
- *  Purpose: To calculate wind chill (effective temperature
+ *  Purpose: To find all the prime numbers in a range and display all the 
+ *  		 anagrams and palindromes in them
  *
  *  @author  BridgeLabz
- *  @version 1.0
- *  @since   19-10-2019
+ *  @version 1.0, 1.1
+ *  @since   19-10-2019, 20-10-2019
  *
  ******************************************************************************/
 package com.bridgeit.algorithms;
@@ -18,12 +19,10 @@ public class PrimeNumbers {
 		int low = utility.readInteger();
 		System.out.println("enter upper limit of your range: ");
 		int high = utility.readInteger();
-		/*
-		 * for(int i =0; i<1000;i++) { if(utility.isPrime(i)) {
-		 * System.out.println((i+1)+"prime"); } else { System.out.println("not prime");
-		 * } }
-		 */
-		utility.primeBetweenRange(low, high);
+		int primeArray[]= utility.primeBetweenRange(low, high);
+		utility.showArrayWithoutZeros(primeArray);
+		utility.primeAnagrams(primeArray);
+		utility.primePalindromes(primeArray);
 	}
 
 }
