@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: flip a coin for specified number of times and display the result 
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   17-10-2019
  *

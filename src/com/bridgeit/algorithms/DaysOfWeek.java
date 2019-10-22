@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Purpose: Find the binary representation of the decimal number
+ *  Purpose: Find the day for a particular date
  *
  *  @author  Ayush Saraf
  *  @version 1.0
@@ -9,13 +9,15 @@ package com.bridgeit.algorithms;
 
 import com.bridgeit.utility.Util;
 
-public class ToBinary {
+public class DaysOfWeek {
 
 	public static void main(String[] args) {
-		Util utility = new Util();
-		System.out.println("Enter a number : ");
-		int number = utility.readInteger();
-		utility.toBinary(number);
+		int month = Integer.parseInt(args[0]);
+		int day = Integer.parseInt(args[1]);
+		int year = Integer.parseInt(args[2]);
+		int dayToPrint = Util.dayOfWeek(month, day, year);
+		System.out.println(day+"/"+month+"/"+year+
+				" falls on "+Util.printDay(dayToPrint));
 	}
 
 }

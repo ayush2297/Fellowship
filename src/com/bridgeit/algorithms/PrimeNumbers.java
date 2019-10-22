@@ -2,7 +2,7 @@
  *  Purpose: To find all the prime numbers in a range and display all the 
  *  		 anagrams and palindromes in them
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0, 1.1
  *  @since   19-10-2019, 20-10-2019
  *

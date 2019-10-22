@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Purpose: Find the binary representation of the decimal number
- *
+ *  Purpose: Money vending machine
+ *  
  *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   22-10-2019
@@ -9,13 +9,13 @@ package com.bridgeit.algorithms;
 
 import com.bridgeit.utility.Util;
 
-public class ToBinary {
+public class VendingMachine {
 
 	public static void main(String[] args) {
-		Util utility = new Util();
-		System.out.println("Enter a number : ");
-		int number = utility.readInteger();
-		utility.toBinary(number);
+		int note = 0;
+		System.out.println("enter the amount that you want to withdraw: ");
+		int amount = Util.readInteger();
+		Util.getMoney(amount,note);
 	}
 
 }

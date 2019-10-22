@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To calculate and print the nth harmonic number 
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   17-10-2019
  *

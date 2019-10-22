@@ -1,18 +1,22 @@
 /******************************************************************************
  *  Purpose: permutations of a string
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
- *  @since   18-10-2019
+ *  @since   22-10-2019
  *
  ******************************************************************************/
 package com.bridgeit.functional;
 
+import com.bridgeit.utility.Util;
+
 public class StringPermutations {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println("enter the string for which you want permutations:");
+		String originalString = Util.readString();
+		String differentPermutations = "";
+		Util.formPermutations(differentPermutations,originalString);
 	}
 
 }

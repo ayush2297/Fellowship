@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: Perform stopwatch operations
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   19-10-2019
  *

@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: From a String replace a word with another word specified by user 
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   17-10-2019
  *

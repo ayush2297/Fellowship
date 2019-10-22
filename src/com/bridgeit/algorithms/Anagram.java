@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To find whether two strings are anagram or not
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   19-10-2019
  *

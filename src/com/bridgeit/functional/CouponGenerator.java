@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To generate unique coupon codes
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   18-10-2019
  *

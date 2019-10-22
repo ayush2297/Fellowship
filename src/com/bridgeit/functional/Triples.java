@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: Find the triplets from an array
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   18-10-2019
  *

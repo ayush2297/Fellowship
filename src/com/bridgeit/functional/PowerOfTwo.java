@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To calculate and print all values from 2^0 to 2^n 
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   17-10-2019
  *

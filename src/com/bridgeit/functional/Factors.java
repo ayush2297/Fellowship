@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To print the factors of the number 
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   17-10-2019
  *

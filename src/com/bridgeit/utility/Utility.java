@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: Utility class for all functional logics
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   18-10-2019
+ *
+ ******************************************************************************/
 package com.bridgeit.utility;
 
 import java.io.IOException;
@@ -96,8 +104,8 @@ public class Utility {
 				tails++;
 			}
 		}
-		double tailsPercentage = tails/count;
-		double headPercentage = heads/count;
+		double tailsPercentage = tails/count*100;
+		double headPercentage = heads/count*100;
 		System.out.println("\nheads percentage : "+headPercentage);
 		System.out.println("tails percentage : "+tailsPercentage);
 	}
@@ -291,7 +299,7 @@ public class Utility {
 	public <T>void showTwoDimIntArray(T[][] tempArray) {
 		for(int i =0; i<tempArray.length; i++) {
 			for(int j=0; j<tempArray[0].length; j++) {
-				printObj.print(tempArray+" ");;
+				printObj.print(tempArray[i][j]+" ");;
 			}
 			printObj.println();
 		}
@@ -337,7 +345,8 @@ public class Utility {
 				for(int k=0; k<numberArray.length; k++) {
 					if((numberArray[i]+numberArray[j]+numberArray[k])==0) {
 						count++;
-						System.out.println(numberArray[i]+" + "+numberArray);
+						System.out.println(numberArray[i]+" + "+numberArray[j]+""
+								+ " + "+numberArray[k]+" = 0");
 					}
 				}
 			}
@@ -388,6 +397,7 @@ public class Utility {
 	 */
 	public void playTicTacToe() {
 		reset();
+		showTicTacToeBoard();
 		for(int i=0;i<9;i++) {
 			if(i%2==0) {
 				computerChance();
@@ -429,10 +439,13 @@ public class Utility {
 		while(true) {
 			int compI = random.nextInt(3);
 			int compJ = random.nextInt(3);
-			if(ticTacToeBoard[compI][compJ]!=null) {
-				continue;
-			} else {
+			System.out.println(compI+"\t"+compJ);
+			if(ticTacToeBoard[compI][compJ]==null) {
+				System.out.println("done");
 				ticTacToeBoard[compI][compJ] = "X";
+				break;
+			} else {
+				continue;
 			}
 		}
 	}
@@ -442,7 +455,7 @@ public class Utility {
 	 */
 	private void showTicTacToeBoard() {
 		for(int i=0; i<3;i++) {
-			for(int j=0; i<3; j++) {
+			for(int j=0; j<3; j++) {
 				System.out.print(ticTacToeBoard[i][j]+"\t");
 			}
 			System.out.println();
@@ -473,6 +486,7 @@ public class Utility {
 				continue;
 			} else {
 				ticTacToeBoard[userI][userJ] = "O";
+				break;
 			}
 		}
 	}

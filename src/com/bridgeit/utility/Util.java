@@ -1,5 +1,14 @@
+/******************************************************************************
+ *  Purpose: Utility class for all algorithmic functions
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   18-10-2019
+ *
+ ******************************************************************************/
 package com.bridgeit.utility;
 
+import com.bridgeit.algorithms.MergeSort;
 import com.bridgeit.utility.Utility;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,16 +18,17 @@ import java.util.Scanner;
 public class Util {
 	
 	static Utility utility = new Utility();
+	static Scanner sc = new Scanner(System.in);
+	static int []  notes = {1000,500,100,50,20,10,5,2,1};
 	
-	File file = new File("/home/user/example.txt");
-	Scanner sc = new Scanner(System.in);
-
+	static File file = new File("/home/user/example.txt");
+	
 	/**
 	 * Purpose: Read String from the user using Scanner class
 	 * 
 	 * @return the String read from the user
 	 */
-	public String readString() {
+	public static String readString() {
 		return sc.next();
 	}
 
@@ -27,7 +37,7 @@ public class Util {
 	 * 
 	 * @return the integer read from the user
 	 */
-	public int readInteger() {
+	public static int readInteger() {
 		return sc.nextInt();
 	}
 
@@ -36,7 +46,7 @@ public class Util {
 	 * 
 	 * @return the float read from the user
 	 */
-	public float readFloat() {
+	public static float readFloat() {
 		return sc.nextFloat();
 	}
 
@@ -45,7 +55,7 @@ public class Util {
 	 * 
 	 * @return the double read from the user
 	 */
-	public double readDouble() {
+	public static double readDouble() {
 		return sc.nextDouble();
 	}
 
@@ -54,7 +64,7 @@ public class Util {
 	 * 
 	 * @return the boolean read from the user
 	 */
-	public boolean readBoolean() {
+	public static boolean readBoolean() {
 		return sc.nextBoolean();
 	}
 	
@@ -63,7 +73,7 @@ public class Util {
 	 * 
 	 * @return: integer array
 	 */
-	public int[] getIntegerArray() {
+	public static int[] getIntegerArray() {
 		System.out.println("enter the number of elements " + "you want to enter in you array: ");
 		int elementsCount = readInteger();
 		int returnArray[] = new int[elementsCount];
@@ -78,9 +88,10 @@ public class Util {
 	 * 
 	 * @return	string array
 	 */
-	public String[] getStringArray() {
+	public static String[] getStringArray() {
 		System.out.println("enter the number of elements you want to insert: ");
 		int num =readInteger();
+		System.out.println("enter the elements: \n");
 		String[] arrToBeReturned = new String[num]; 
 		for(int i=0;i<num ; i++) {
 			arrToBeReturned[i] = readString();
@@ -88,13 +99,13 @@ public class Util {
 		return arrToBeReturned;
 	}
 	
-	public void showIntegerArray(int[] arrayName) {
+	public static void showIntegerArray(int[] arrayName) {
 		for(int i=0; i<arrayName.length;i++) {
 			System.out.println(arrayName[i]);
 		}
 	}
 	
-	public void showStringArray(String[] arrayName) {
+	public static void showStringArray(String[] arrayName) {
 		for(int i=0; i<arrayName.length;i++) {
 			System.out.println(arrayName[i]);
 		}
@@ -146,7 +157,7 @@ public class Util {
 	 * @param low  lower range
 	 * @param high upper range
 	 */
-	public int[] primeBetweenRange(int low, int high) {
+	public static int[] primeBetweenRange(int low, int high) {
 		int storePrimes[] = new int[(high - low) / 2];
 		Integer count = 0;
 		for (int i = low; i < high; i++) {
@@ -384,7 +395,7 @@ public class Util {
 	 * 
 	 * @return	file
 	 */
-	public File readFile() 
+	public static File readFile() 
 	{
 		return file;
 	}
@@ -395,7 +406,7 @@ public class Util {
 	 * @param 		fileToSearch			the file to be used	
 	 * @throws 		FileNotFoundException	if no file present
 	 */
-	public void findInFile(File fileToSearch) throws FileNotFoundException {
+	public static void findInFile(File fileToSearch) throws FileNotFoundException {
 		Scanner sc=new Scanner(fileToSearch);
 		sc.useDelimiter(",");
 		String store="";
@@ -417,7 +428,7 @@ public class Util {
 	/**
 	 * Purpose: perform temperature conversion
 	 */
-	public void temperatureConverter() {
+	public static void temperatureConverter() {
 		int ch;
 		do {
 			System.out.println("\n\nEnter a choice:\n1.deg.celc. to farh.\n2.fahr. to deg.celc.\n3.EXIT\n");
@@ -448,7 +459,7 @@ public class Util {
 	 * @param 	number		number whose square root is to be found
 	 * @return				square root of the number
 	 */
-	public double sqrt(double number) {
+	public static double sqrt(double number) {
 		double t= number;
 		double eps = 1e-15;
 		double epst = eps*t;
@@ -462,38 +473,309 @@ public class Util {
 	 * Purpose: To convert decimal to binary and swap nibbles
 	 * @param 	number		decimal number input
 	 */
-	public void toBinary(int number) {
-		int i=0;
-		int binArray[] = new int[15] ;
+	public static void toBinary(int number) {
+		int binArray[] = new int[8] ;
+		int arrLen = binArray.length;
+		int position = arrLen-1;
 		while(number!=0) {
 			int a = number%2;
-			binArray[i] = a;
+			binArray[position] = a;
 			number = number/2;
-			i++;
+			position--;
 		}
-		System.out.println("binary representation:");
-		for(int j = 7 ; j>=0 ; j--) {
-			System.out.print(binArray[j]);
-			if(j==4) {
-				System.out.print("\n");
-			}
-		}
+		printBinary(binArray);
 		System.out.println("\nAfter swapping\n");
-		
-		for(int j = 0 ; j<=7 ; j++) {
-			System.out.print(binArray[j]);
-			if(j==3) {
-				System.out.print("\n");
-			}
+		for(int j = 0; j<8/2;j++) {
+			int temp = binArray[j];
+			binArray[j] = binArray[4+j];
+			binArray[4+j] = temp;
 		}
+		printBinary(binArray);
 		System.out.println("\n again to number:");
+		printToDecimal(binArray);
+	}
+
+	private static void printToDecimal(int[] binArray) {
 		double sum =0;
 		int l =7 ;
-		for(int k = 0; k<=7;k++) {
+		for(int k = 0; k<binArray.length;k++) {
 			sum = sum + binArray[k] * Math.pow(2.00, (double)l);
 			l--;
 		}
 		System.out.println("\nnumber is "+sum);
 	}
-	 
+
+	private static void printBinary(int[] binArray) {
+		System.out.println("binary representation:");
+		for(int j = 0 ; j<binArray.length; j++) {
+			System.out.print(binArray[j]);
+			if(j==3) {
+				System.out.print("\t");
+			}
+		}
+	}
+
+	/**
+	 * Purpose: Find the day of the week for particular date
+	 * @param 	month	mm
+	 * @param 	day		dd
+	 * @param	year	yyyy
+	 * @return			0-sunday, 1-monday,....7-saturday
+	 */
+	public static int dayOfWeek(int month, int day, int year) {
+		int y = year - (14-month)/12;
+		int x = y+y/4-y/100+y/400;
+		int m = month+12*((14-month)/12)-2;
+		int d = (day+x+31*m/12);
+		int finalDay= d%7;
+		return finalDay;
+	}
+
+	/**
+	 * Purpose: Display the day based on the output of dayOfWeek()
+	 * @param 	dayToPrint		output from dayOfWeek()
+	 * @return					day name
+	 */
+	public static String printDay(int dayToPrint) {
+		switch (dayToPrint) {
+		case 0:
+			return "Sunday";
+		case 1:
+			return "monday";
+		case 2:
+			return "tuesday";
+		case 3:
+			return "wednesday";
+		case 4:
+			return "thursday";
+		case 5:
+			return "friday";
+		case 6:
+			return "saturday";
+		}
+		return null;
+	}
+
+	/**
+	 * Purpose: Calculates the monthly payment
+	 * 
+	 * @param 	principal			initial amount
+	 * @param 	year				number of years to repay
+	 * @param 	rateOfInterest		interest per year on initial amount
+	 * @return						monthly payment
+	 */
+	public static double monthlyPayment(double principal, double year, double rateOfInterest) {
+		double rate = rateOfInterest/(12*100);
+		double years = 12*year;
+		double payment = (principal*rate)/(1-Math.pow((1+rate),(-years)));
+		return payment;
+	}
+
+	/**
+	 * Purpose: Begins the merge sort process
+	 */
+	public static void beginMergeSort() {
+		String [] arrayToSort = getStringArray();
+		int low =0;
+		int high = arrayToSort.length-1;
+		mergeSort(arrayToSort,low,high);
+		for(String s : arrayToSort)
+			System.out.print(s+" ");
+	}
+	
+	/**
+	 * Purpose: Produces sub arrays till smallest units (single elements) 
+	 * 			are formed
+	 *   
+	 * @param 	arrayToSort		array to be divided into sub arrays
+	 * @param 	low				lower bound
+	 * @param 	high			upper bound
+	 */
+	private static void mergeSort(String[] arrayToSort, int low, int high) {
+		if(low < high) {
+			int mid = (low+high)/2;
+			mergeSort(arrayToSort, low, mid);
+			mergeSort(arrayToSort, mid+1, high);
+			
+			mergeIt(arrayToSort,low,mid,high);
+		}
+	}
+
+	/**
+	 * Purpose: Merges the sub-arrays obtained from mergeSort()
+	 * 			 in sorted manner
+	 *  
+	 * @param 	arrayToSort		sub-array 
+	 * @param 	low				lower bound
+	 * @param 	mid				middle position
+	 * @param 	high			upper bound 
+	 */
+	private static void mergeIt(String[] arrayToSort, int low, int mid, int high) {
+		int sizeOfLeftArr = mid-low+1;
+		int sizeOfRightArr = high-mid;
+		String[] leftSubArr = new String[sizeOfLeftArr];
+		String[] rightSubArr = new String[sizeOfRightArr];
+		for(int i=0;i<sizeOfLeftArr;i++) {
+			leftSubArr[i]= arrayToSort[low+i];
+		}
+		for(int i=0;i<sizeOfRightArr;i++) {
+			rightSubArr[i]= arrayToSort[mid+1+i];
+		}
+		int j=0;
+		int i=0;
+		int k=low;
+		while(i<sizeOfLeftArr && j<sizeOfRightArr) {
+			if(leftSubArr[i].compareTo(rightSubArr[j])<=0)
+				arrayToSort[k++] = leftSubArr[i++];
+			else
+				arrayToSort[k++] = rightSubArr[j++];
+		}
+		while(i<sizeOfLeftArr)
+			arrayToSort[k++] = leftSubArr[i++];
+		while(j<sizeOfRightArr)
+			arrayToSort[k++] = rightSubArr[j++];
+	}
+	
+	 /**
+	  * Purpose: Start the gambling game. Take inital inputs from the player
+	  * 
+	  * @return: stake and goal 
+	  */ 
+	public static int[] startGambling() {
+		int initialValues[] = new int [2];
+		System.out.println("Enter you initial amount/stake: ");
+		initialValues[0] = readInteger();
+		System.out.println("Enter you goal: ");
+		initialValues[1] = readInteger();
+		System.out.println("Lets begin game simulation: ");
+		return initialValues;
+	}
+	
+	/**
+	 * Purpose: Start the betting simulation 
+	 * 
+	 * @param 	stake	the initial amount (stake) read from the user
+	 * @param 	goal	the goal set by the user, which if achieved, 
+	 * 					ends the game;
+	 */
+	public static void bet(int stake, int goal) {
+		int chances =0;
+		double loss=0,win=0;
+		int results[][] = new int[20][2];
+		while(stake>0 && stake!=goal && chances<20) {
+			double num = Math.random();
+			if(num<0.5) {
+				loss++;
+				results[chances][0]=0;
+				results[chances++][1]=chances;
+				stake--;
+			}
+			else {
+				win++;
+				results[chances][0]=0;
+				results[chances++][1]=chances;
+				stake++;
+			}
+		}
+		
+		double winPerc = (win/(double)chances)*100;
+		double lossPerc = (loss/(double)chances)*100;
+		System.out.println("Win percentage: "+winPerc);
+		System.out.println("Loss percentage: "+lossPerc);
+		result(stake,goal,chances);
+	}
+
+	/**
+	 * Purpose: After all simulations are completed, results are displayed
+	 * 
+	 * @param 	stake		Final amount remaining with user after the game 
+	 * @param 	goal		the target set by user
+	 * @param 	chances		the number of simulations performed
+	 */
+	private static void result(int stake,int goal, int chances) {
+		if(stake==goal) {
+			System.out.println("Congratulations!! .... your goal has been accomplished in "+ chances+" simulations");
+		}
+		else if(stake==0) {
+			System.out.println("Sorry!! .... Better luck next time..you lost all your money in "+ chances+" simulations");
+		}
+		else {
+			System.out.println("You've played enough chances... your final amount is "+stake+" rupees");
+		}
+	}
+
+	/**
+	 * Purpose: Find the number within n guesses
+	 * 
+	 * @param 	numberChoice	the number chosen by user
+	 * @param 	range			max range to select from
+	 */
+	public static void findNumber(double numberChoice, double range) {
+		double low = 0;
+		int count = 0;
+		double high = range;
+		while(low<high) {
+			count++;
+			int mid = (int) ((low+high)/2);
+			System.out.println("is this you number? :"+mid+
+					"\ntrue or false?");
+			boolean correctChoice = readBoolean();
+			if(!correctChoice) {
+				System.out.println("is your number less than this number? :"
+						+ "\ntrue or false?");
+				boolean lessThan = readBoolean();
+				if(lessThan) {
+					high = mid-1 ;
+					continue;
+				} else {
+					low = mid+1 ;
+					continue;
+				}
+			} else {
+				System.out.println("we found you number in "+ count+ " chances!");
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Purpose: Gives minimum notes from a vending machine for a given amount
+	 * 
+	 * @param: 	amount		amount to be withdrawn
+	 * @param:	noteType	type of note (refer to {@value notes[]} 
+	 */
+	public static void getMoney(int amount,int noteType) {
+		int count=0;
+		int notesToBeDeducted=notes[noteType];
+		while(amount/notesToBeDeducted>0) {
+			count++;
+			amount = amount-notes[noteType];
+		}
+		System.out.println(notes[noteType]+" rs notes : "+count);
+		if(amount!=0) {
+			noteType++;
+			getMoney(amount, noteType);
+		}
+	}
+
+	/**
+	 * Purpose: Form permutations of a string
+	 * 
+	 * @param 	differentPermutations	formed permutations
+	 * @param 	originalString			reamining elements to be added to permutations
+	 */
+	public static void formPermutations(String differentPermutations,
+			String originalString) {
+		int remainingElements = originalString.length();
+		if(remainingElements==0) {
+			System.out.println(differentPermutations);
+		} else {
+			for(int i=0;i<remainingElements;i++) {
+				String pendingElements = originalString.substring(0,i)+
+						originalString.substring(i+1,remainingElements);
+				String formedString = differentPermutations+originalString.charAt(i);
+				formPermutations(formedString,pendingElements); 		}
+		}
+	}
+
 }

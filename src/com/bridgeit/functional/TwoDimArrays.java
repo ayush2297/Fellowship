@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To create and display two dimensional arrays of various data types
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   18-10-2019
  *

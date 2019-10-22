@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To find out whether the year entered is a leap year or not 
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   17-10-2019
  *

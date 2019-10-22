@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: Find the a euclidean distance of a coordinate (x,y) from (0,0)
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   18-10-2019
  *

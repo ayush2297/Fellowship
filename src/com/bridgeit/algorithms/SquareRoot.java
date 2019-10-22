@@ -1,9 +1,9 @@
 /******************************************************************************
  *  Purpose: Find the square root of the given number
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
- *  @since   20-10-2019
+ *  @since   21-10-2019
  ******************************************************************************/
 package com.bridgeit.algorithms;
 

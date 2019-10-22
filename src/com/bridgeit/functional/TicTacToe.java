@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: Tic-Tac-Toe game
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   19-10-2019
  *

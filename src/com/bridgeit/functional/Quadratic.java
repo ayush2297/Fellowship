@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: To calculate roots of quadratic functions ax^2+bx+c
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   19-10-2019
  *

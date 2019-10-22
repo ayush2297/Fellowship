@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Purpose: Trying generic functions for searching and sorting algorithms
  *
- *  @author  BridgeLabz
+ *  @author  Ayush Saraf
  *  @version 1.0
  *  @since   20-10-2019
  *
