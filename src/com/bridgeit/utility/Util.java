@@ -12,15 +12,19 @@ import com.bridgeit.algorithms.MergeSort;
 import com.bridgeit.utility.Utility;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Util {
 	
+	static Random random = new Random();
+	static HashSet<String> hsForPermutations = new HashSet<String>();
 	static Utility utility = new Utility();
 	static Scanner sc = new Scanner(System.in);
 	static int []  notes = {1000,500,100,50,20,10,5,2,1};
-	
 	static File file = new File("/home/user/example.txt");
 	
 	/**
@@ -764,7 +768,7 @@ public class Util {
 	 * @param 	differentPermutations	formed permutations
 	 * @param 	originalString			reamining elements to be added to permutations
 	 */
-	public static void formPermutations(String differentPermutations,
+	public static void formPermutationsRecursion(String differentPermutations,
 			String originalString) {
 		int remainingElements = originalString.length();
 		if(remainingElements==0) {
@@ -774,8 +778,51 @@ public class Util {
 				String pendingElements = originalString.substring(0,i)+
 						originalString.substring(i+1,remainingElements);
 				String formedString = differentPermutations+originalString.charAt(i);
-				formPermutations(formedString,pendingElements); 		}
+				formPermutationsRecursion(formedString,pendingElements); 		
+				}
 		}
 	}
 
+	/**
+	 * Purpose: Display various permutations for an input string
+	 * 
+	 * @param 	originalString		string of which we want to find the permutations
+	 */
+	public static void formPermutationsIteration(String originalString) {
+		double start = utility.timeInMillis();
+		int repeat = 0;
+		int len = originalString.length();
+		int maxPermutations = factorial(len);
+		String [] possibilities = originalString.split("");
+		
+		ArrayList<String> arrListForPerm = new ArrayList<String>();
+		while(hsForPermutations.size()!=maxPermutations) {
+			for(int i =0; i<possibilities.length;i++) {
+				arrListForPerm.add(possibilities[i]);
+			}
+			String newPermutation = "";
+			for(int i=0;i<possibilities.length;i++) {
+				int index = random.nextInt(arrListForPerm.size());
+				newPermutation += arrListForPerm.get(index);
+				arrListForPerm.remove(index);
+			}
+			if(!hsForPermutations.add(newPermutation)) {
+				repeat++;
+			} else {
+				System.out.println(newPermutation);
+			}
+		}
+		double end = utility.timeInMillis();
+		System.out.println("Time required: "+utility.elapsedTime(start, end)+" "
+				+ "milliseconds\nnumber of failures: " +repeat);
+	}
+	
+	public static int factorial(int number) {
+		int fact = 1;
+		for(int i=1;i<=number;i++) {
+			fact= fact *i;
+		}
+		return fact;
+	}
+	
 }

@@ -16,7 +16,8 @@ public class StringPermutations {
 		System.out.println("enter the string for which you want permutations:");
 		String originalString = Util.readString();
 		String differentPermutations = "";
-		Util.formPermutations(differentPermutations,originalString);
+		//Util.formPermutationsRecursion(differentPermutations,originalString);
+		Util.formPermutationsIteration(originalString);
 	}
 
 }
