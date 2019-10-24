@@ -7,15 +7,15 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class VendingMachine {
 
 	public static void main(String[] args) {
 		int note = 0;
 		System.out.println("enter the amount that you want to withdraw: ");
-		int amount = Util.readInteger();
-		Util.getMoney(amount,note);
+		int amount = UtilityAlgorithms.readInteger();
+		UtilityAlgorithms.getMoney(amount,note);
 	}
 
 }

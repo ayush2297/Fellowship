@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class CouponGenerator {
 
 	public static void main(String[] args) {
-		Utility utility = new Utility();
+		UtilityFunctional utility = new UtilityFunctional();
 		System.out.println("enter the number of coupouns you want to generate: ");
 		int numberOfCoupons=utility.readInteger();
 		int totalCouponsgenerated = 0;

@@ -7,7 +7,7 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class DaysOfWeek {
 
@@ -15,9 +15,9 @@ public class DaysOfWeek {
 		int month = Integer.parseInt(args[0]);
 		int day = Integer.parseInt(args[1]);
 		int year = Integer.parseInt(args[2]);
-		int dayToPrint = Util.dayOfWeek(month, day, year);
+		int dayToPrint = UtilityAlgorithms.dayOfWeek(month, day, year);
 		System.out.println(day+"/"+month+"/"+year+
-				" falls on "+Util.printDay(dayToPrint));
+				" falls on "+UtilityAlgorithms.printDay(dayToPrint));
 	}
 
 }

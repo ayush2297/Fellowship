@@ -7,11 +7,11 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class TemperatureConversion {
 	public static void main(String [] args) {
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		utility.temperatureConverter();
 	}
 }

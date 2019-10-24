@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Utility {
+public class UtilityFunctional {
 	
 	static Random random = new Random();
 	static String[][] ticTacToeBoard = new String [3][3];

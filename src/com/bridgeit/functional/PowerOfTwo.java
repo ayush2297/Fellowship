@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class PowerOfTwo {
 
 	public static void main(String[] args) {
-		Utility utility = new Utility();
+		UtilityFunctional utility = new UtilityFunctional();
 		int power = Integer.parseInt(args[0]);
 		if(power<31 && power>=0)
 			utility.twoRaisedTo(power);

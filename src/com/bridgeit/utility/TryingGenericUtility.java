@@ -4,10 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class TryingGenericUtility {
-	static Utility utility = new Utility();
+	static UtilityFunctional utility = new UtilityFunctional();
 	static Scanner sc = new Scanner(System.in);
 	
 
@@ -62,7 +62,7 @@ public class TryingGenericUtility {
 	 * 									false if the element is not present in array
 	 */
 	public static <T extends Comparable<T>> boolean binarySearch(T[] arrayToBeSearched, T numberToBeSearched) {
-		double start = Utility.timeInMillis()*10000;
+		double start = UtilityFunctional.timeInMillis()*10000;
 		int low = 0;
 		int high = arrayToBeSearched.length;
 		int mid =(low + high) / 2;

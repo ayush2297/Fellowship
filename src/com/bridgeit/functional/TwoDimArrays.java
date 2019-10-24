@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class TwoDimArrays {
 
 	public static void main(String[] args) {
-		Utility utility = new Utility();
+		UtilityFunctional utility = new UtilityFunctional();
 		int choice;
 		do {
 			System.out.println("1.integer array\n2.double array\n"

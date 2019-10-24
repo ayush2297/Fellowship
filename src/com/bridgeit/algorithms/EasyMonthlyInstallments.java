@@ -8,7 +8,7 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class EasyMonthlyInstallments {
 
@@ -19,7 +19,7 @@ public class EasyMonthlyInstallments {
 		System.out.println("Principal amount: "+principal);
 		System.out.println("\nEMI for "+year+" years, at an "
 				+ "interest rate of "+rateOfInterest+" is : "+
-				Util.monthlyPayment(principal, year, rateOfInterest));
+				UtilityAlgorithms.monthlyPayment(principal, year, rateOfInterest));
 	}
 
 }

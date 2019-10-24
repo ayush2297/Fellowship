@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class LeapYear {
 
 	public static void main(String[] args) {
-		Utility utility = new Utility();
+		UtilityFunctional utility = new UtilityFunctional();
 		System.out.println("Enter the year : ");
 		int year = utility.getYear();
 		if(utility.isLeap(year)) 

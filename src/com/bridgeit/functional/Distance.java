@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class Distance {
 
 	public static void main(String[] args) {
-		Utility utility = new Utility();
+		UtilityFunctional utility = new UtilityFunctional();
 		int [] coordinates = new int[2];
 		coordinates[0] =  Integer.parseInt(args[0]);
 		coordinates[1] =  Integer.parseInt(args[1]);

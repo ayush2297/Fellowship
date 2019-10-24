@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 
 public class WindChill {
 
 	public static void main(String[] args) {
-		Utility utility =  new Utility();
+		UtilityFunctional utility =  new UtilityFunctional();
 		Double temperature = Double.parseDouble(args[0]);
 		Double speed = Double.parseDouble(args[1]);
 		

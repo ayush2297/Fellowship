@@ -7,12 +7,12 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class ToBinary {
 
 	public static void main(String[] args) {
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		System.out.println("Enter a number : ");
 		int number = utility.readInteger();
 		utility.toBinary(number);

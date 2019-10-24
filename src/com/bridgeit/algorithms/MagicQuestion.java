@@ -7,7 +7,7 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class MagicQuestion {
 
@@ -15,8 +15,8 @@ public class MagicQuestion {
 		int n = Integer.parseInt(args[0]);
 		double range = Math.pow(2, n);
 		System.out.println("select your number between 0 to "+(range-1));
-		int numberChoice = Util.readInteger();
-		Util.findNumber(numberChoice, range);
+		int numberChoice = UtilityAlgorithms.readInteger();
+		UtilityAlgorithms.findNumber(numberChoice, range);
 	}
 
 }

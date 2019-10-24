@@ -7,12 +7,12 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class SquareRoot {
 
 	public static void main(String[] args) {
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		System.out.println("enter the number you want to find square root of: ");
 		double number = utility.readDouble();
 		double root = utility.sqrt(number);

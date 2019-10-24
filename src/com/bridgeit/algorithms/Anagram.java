@@ -8,12 +8,12 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class Anagram {
 
 	public static void main(String[] args) {
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		System.out.println("Enter two strings to check if they are anagram or not: ");
 		String firstString = utility.readString();
 		String secondString = utility.readString();

@@ -7,7 +7,7 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 public class SearchInFile {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		File fileToSearch = utility.readFile();
 		utility.findInFile(fileToSearch);
 	}

@@ -9,7 +9,7 @@
 package com.bridgeit.utility;
 
 import com.bridgeit.algorithms.MergeSort;
-import com.bridgeit.utility.Utility;
+import com.bridgeit.utility.UtilityFunctional;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Util {
+public class UtilityAlgorithms {
 	
 	static Random random = new Random();
 	static HashSet<String> hsForPermutations = new HashSet<String>();
-	static Utility utility = new Utility();
+	static UtilityFunctional utility = new UtilityFunctional();
 	static Scanner sc = new Scanner(System.in);
 	static int []  notes = {1000,500,100,50,20,10,5,2,1};
 	static File file = new File("/home/user/example.txt");
@@ -248,7 +248,7 @@ public class Util {
 	 * 									false if the element is not present in array
      */
  	public static boolean binarySearchInteger(int[] numberArray, int numberToSearch) {
-		double start=Utility.timeInMillis();
+		double start=UtilityFunctional.timeInMillis();
 		int low=0;
 		int high=numberArray.length-1;
 		int mid=(low+high)/2;
@@ -259,7 +259,7 @@ public class Util {
 				low=mid+1;
 			} else if(numberArray[mid]==numberToSearch) {
 				System.out.println("Element found at "+(mid+1)+"th position");
-				double end=Utility.timeInMillis();
+				double end=UtilityFunctional.timeInMillis();
 				System.out.println(utility.elapsedTime(start, end));
 				return true;
 			} else {
@@ -269,7 +269,7 @@ public class Util {
 		}
 		
 		if(low>high) {
-			double end=Utility.timeInMillis();
+			double end=UtilityFunctional.timeInMillis();
 			System.out.println("\nelapsed time: "+utility.elapsedTime(start, end));
 			System.out.println("\nElement not found ");
 		}
@@ -283,7 +283,7 @@ public class Util {
 	 * @param 	wordToSearch		string to be searched in string array
 	 */
 	public static boolean binarySearchString(String[] stringArray, String wordToSearch) {
-		double start=Utility.timeInMillis();
+		double start=UtilityFunctional.timeInMillis();
 		int low=0;
 		int high=stringArray.length-1;
 		int mid=(low+high)/2;
@@ -292,7 +292,7 @@ public class Util {
 				low=mid+1;
 			} else if(stringArray[mid].compareTo(wordToSearch)==0) {
 				System.out.println("String found at "+(mid+1)+" position");
-				double end=Utility.timeInMillis();
+				double end=UtilityFunctional.timeInMillis();
 				System.out.println("\nelapsed time: "+utility.elapsedTime(start, end));
 				return true;
 			} else {
@@ -301,7 +301,7 @@ public class Util {
 			mid=(low+high)/2;
 		}
 		if(low>high) {
-			double end=Utility.timeInMillis();
+			double end=UtilityFunctional.timeInMillis();
 			System.out.println(utility.elapsedTime(start, end));
 			System.out.println("\nString not found ");
 		}
@@ -314,7 +314,7 @@ public class Util {
 	 * @param 		numberArray		array of integers
 	 */
 	public static int[] insertionSortInteger(int[] numberArray) {
-		double start=Utility.timeInMillis();
+		double start=UtilityFunctional.timeInMillis();
 		for(int i=1;i<numberArray.length;i++) {
 			int key=numberArray[i];
 			int j=i-1;
@@ -324,7 +324,7 @@ public class Util {
 			}
 			numberArray[j+1]=key;
 		}
-		double end=Utility.timeInMillis();
+		double end=UtilityFunctional.timeInMillis();
 		System.out.println("\nelapsed time: "+utility.elapsedTime(start, end));
 		System.out.println();
 		return numberArray; 
@@ -336,7 +336,7 @@ public class Util {
 	 * @param 		stringArray		array of strings
 	 */
 	public static String[] insertionSortString(String[] stringArray) {
-		double start=Utility.timeInMillis();
+		double start=UtilityFunctional.timeInMillis();
 		for(int i=1;i<stringArray.length;i++) {
 			String key=stringArray[i];
 			int j=i-1;
@@ -346,7 +346,7 @@ public class Util {
 			}
 			stringArray[j+1]=key;
 		}
-		double end=Utility.timeInMillis();
+		double end=UtilityFunctional.timeInMillis();
 		System.out.println("\nelapsed time: "+utility.elapsedTime(start, end));
 		System.out.println();
 		return stringArray;
@@ -357,7 +357,7 @@ public class Util {
 	 * @param 		numberArray			array of integers
 	 */
 	public static int[] bubbleSortInteger(int[] numberArray) {
-		double start=Utility.timeInMillis();
+		double start=UtilityFunctional.timeInMillis();
 		for(int i=0;i<numberArray.length;i++) {
 			for(int j=0;j<numberArray.length-1;j++) {
 				int k=j+1;
@@ -368,7 +368,7 @@ public class Util {
 				}
 			}
 		}
-		double end=Utility.timeInMillis();
+		double end=UtilityFunctional.timeInMillis();
 		System.out.println("\nelapsed time: "+utility.elapsedTime(start, end));
 		return numberArray;
 	}
@@ -378,7 +378,7 @@ public class Util {
 	 * @param 		stringArray		array of strings
 	 */
 	public static String[] bubbleSortString(String[] stringArray) {
-		double start=Utility.timeInMillis();
+		double start=UtilityFunctional.timeInMillis();
 		for(int i=0;i<stringArray.length;i++) {
 			for(int j=0;j<stringArray.length-1;j++) {
 				int k=j+1;
@@ -389,7 +389,7 @@ public class Util {
 				}
 			}
 		}
-		double end=Utility.timeInMillis();
+		double end=UtilityFunctional.timeInMillis();
 		System.out.println("\nelapsed time: "+utility.elapsedTime(start, end));
 		return stringArray;
 	}

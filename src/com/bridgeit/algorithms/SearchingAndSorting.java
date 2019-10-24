@@ -8,13 +8,13 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class SearchingAndSorting {
 
 	public static void main(String[] args) {
 
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		int choice;
 		do {
 			System.out.println("\n\n1.Binary search (integers)\n2.Binary search (string)"

@@ -7,15 +7,15 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class Gambler {
 
 	public static void main(String[] args) {
-			int inputs[]= Util.startGambling();
+			int inputs[]= UtilityAlgorithms.startGambling();
 			int stake = inputs[0];
 			int goal = inputs[1];
-			Util.bet(stake, goal);
+			UtilityAlgorithms.bet(stake, goal);
 		}
 
 }

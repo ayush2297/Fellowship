@@ -9,12 +9,12 @@
  ******************************************************************************/
 package com.bridgeit.algorithms;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class PrimeNumbers {
 
 	public static void main(String[] args) {
-		Util utility = new Util();
+		UtilityAlgorithms utility = new UtilityAlgorithms();
 		System.out.println("enter lower limit of your range: ");
 		int low = utility.readInteger();
 		System.out.println("enter upper limit of your range: ");

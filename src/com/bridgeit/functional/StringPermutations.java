@@ -8,16 +8,16 @@
  ******************************************************************************/
 package com.bridgeit.functional;
 
-import com.bridgeit.utility.Util;
+import com.bridgeit.utility.UtilityAlgorithms;
 
 public class StringPermutations {
 
 	public static void main(String[] args) {
 		System.out.println("enter the string for which you want permutations:");
-		String originalString = Util.readString();
+		String originalString = UtilityAlgorithms.readString();
 		String differentPermutations = "";
 		//Util.formPermutationsRecursion(differentPermutations,originalString);
-		Util.formPermutationsIteration(originalString);
+		UtilityAlgorithms.formPermutationsIteration(originalString);
 	}
 
 }
