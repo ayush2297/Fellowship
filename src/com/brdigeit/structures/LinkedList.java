@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: List implementation using Node
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   29-10-2019
+ *
+ ******************************************************************************/
 package com.brdigeit.structures;
 
 import java.io.BufferedWriter;
@@ -102,12 +110,12 @@ public class LinkedList<T>{
 		Node newHead = new Node<T>(data);
 		if( listIsEmpty() ) {
 			head = newHead;
-			System.out.println("added at head");
+//			System.out.println("added at head");
 			return;
 		}
 		newHead.nextNode = head;
 		head = newHead;
-		System.out.println("added at head");
+//		System.out.println("added at head");
 	}
 	
 	/**
@@ -147,7 +155,7 @@ public class LinkedList<T>{
 			traversingNode = traversingNode.nextNode;
 		}
 		traversingNode.nextNode = insertNode;
-		System.out.println("added at end");
+//		System.out.println("added at end");
 	}
 	
 	/**
@@ -207,6 +215,10 @@ public class LinkedList<T>{
 			System.out.println((i+1)+". adding all");
 			addAtEnd(inputArray[i]);
 		}
+	}
+	
+	public <T>void add(T data){
+		addAtEnd(data);
 	}
 	
 	/**
@@ -402,7 +414,7 @@ public class LinkedList<T>{
 		String[] tempArray = fileContents.split(" ");
 		int[] inputArray = new int[tempArray.length]; 
 		for(int i=0; i<inputArray.length; i++) {
-			addOrdered(Double.parseDouble(tempArray[i]));
+			addOrdered(Integer.parseInt(tempArray[i]));
 		}
 	}
 }

@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: Unordered list implementation
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   25-10-2019
+ *
+ ******************************************************************************/
 package com.bridgeit.datastructures;
 
 import java.io.File;
@@ -24,7 +32,7 @@ public class UnorderedList {
 		list.show();
 		System.out.println("enter the string you want to search: ");
 		String find = UtilityAlgorithms.readString();
-		list.searchNode(find);
+		list.searchNodeUL(find);
 	}
 
 }

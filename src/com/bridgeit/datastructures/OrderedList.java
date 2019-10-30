@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: Ordered list implementation
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   29-10-2019
+ *
+ ******************************************************************************/
 package com.bridgeit.datastructures;
 
 import java.io.BufferedReader;
@@ -16,7 +24,7 @@ public class OrderedList {
 		System.out.println(fileContents);
 		list.addAllOrdered(fileContents);
 		list.show();
-		list.searchNode(12.0);
+		list.searchNodeOL(12);
 	}
 
 }
