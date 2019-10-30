@@ -1,14 +1,19 @@
 package com.bridgeit.utility;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+
 public class UtilityDataStructures {
 
 	static Scanner sc = new Scanner(System.in);
+	File fileOL = new File("/home/user/fileForOrderedList.txt");
 	
 	/**
 	 * Purpose: Read String from the user using Scanner class
@@ -66,8 +71,10 @@ public class UtilityDataStructures {
 
 	public static String readFileContents(Scanner inputFile) {
 		String allFileContents = "";
+	    sc.useDelimiter(" ");
 		while(inputFile.hasNext()) {
-			allFileContents += inputFile.next();
+			allFileContents += inputFile.next() + " " ;
+			//System.out.println(allFileContents);
 		}
 		System.out.println(allFileContents);
 		return allFileContents;
@@ -78,6 +85,22 @@ public class UtilityDataStructures {
 		while(inputFile.hasNext()) {
 			System.out.println(inputFile.next());
 		}	
+	}
+
+	public static BufferedReader AcceptWithBuffReader() throws FileNotFoundException {
+		File fileOL = new File("/home/user/fileForOrderedList.txt");
+		FileReader fr = new FileReader(fileOL);
+		BufferedReader br = new BufferedReader(fr);
+		return br;
+	}
+
+	public static String ReadWithBuffReader(BufferedReader br) throws IOException {
+		String tempString = "";
+		String finalString = "";
+		while((tempString = br.readLine()) != null) {
+			finalString += tempString+" ";
+		}
+		return finalString;
 	}
 
 }

@@ -1,22 +1,19 @@
 package com.brdigeit.structures;
 
-public class Node<T> {
-//	implements Comparable <T>
-	int data;
+
+
+public class Node<T>{
+	T data;
 	Node nextNode;
 	
 	Node(){
-		this.data = (Integer) null;
+		this.data = null;
 		this.nextNode = null;
 	}
 	
-	Node(int data){
+	Node(T data){
 		this.data = data;
 		this.nextNode = null;
 	}
 
-//	@Override
-//	public <T>int compareTo(int data) {
-//		if()
-//	}
 };

@@ -1,17 +1,41 @@
 package com.brdigeit.structures;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.w3c.dom.ls.LSInput;
+
 public class LinkedList<T>{
 	
 	Node<T> head;
+	String pathForUnorderedList = "/home/user/file.txt";
+	String pathForOrderedList = "/home/user/fileForOrderedList.txt";
 
+	/**
+	 * Purpose: to check if given list has any elements in it
+	 * 
+	 * @param 	<T>		generic definition
+	 * @return			true - if list has atleast one element
+	 * 					false - if list has no elements
+	 */
 	public <T>boolean listIsEmpty() {
 		if( head == null ) {
-			System.out.println("Empty list!\n");
+			//System.out.println("Empty list!\n");
 			return true;
 		}
 		return false;
 	}
 	
+	/**
+	 * Purpose: checks if a element points to another element
+	 * 
+	 * @param 	<T>		generic definition
+	 * @param 	node	to check if this element points to another element
+	 * @return			true - if element points to another element
+	 * 					false - if element does not point to another element
+	 */
 	public <T>boolean hasNext(Node<T> node){
 		if( node.nextNode != null) {
 			return true;
@@ -19,12 +43,25 @@ public class LinkedList<T>{
 		return false;
 	}
 	
+	/**
+	 * Purpose: get next element from the list
+	 * 
+	 * @param 	<T>		generic definition
+	 * @param 	node	to return the element after this element
+	 * @return			next element
+	 */
 	public <T>Node getNext(Node<T> node){
 		if( hasNext(node) )
 			return node.nextNode;
 		return null;
 	}
 	
+	/**
+	 * Purpose: returns the size of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 * @return			number of elements in the list
+	 */
 	public <T>int size(){
 		if( listIsEmpty() )
 			return 0;
@@ -38,6 +75,11 @@ public class LinkedList<T>{
 	}
 	
 	
+	/**
+	 * Purpose: displaying all elements of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
 	public <T>void show(){
 		if( listIsEmpty() ) {
 			System.out.println("Nothing to display\n");
@@ -48,19 +90,32 @@ public class LinkedList<T>{
 			System.out.println( traversingNode.data );
 			traversingNode = traversingNode.nextNode;
 		}
+		System.out.println(traversingNode.data);
 	}
 	
-	public <T>void addAtHead(int data) {
+	/**
+	 * Purpose: adding an element at the head of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
+	public <T>void addAtHead(T data) {
 		Node newHead = new Node<T>(data);
 		if( listIsEmpty() ) {
 			head = newHead;
+			System.out.println("added at head");
 			return;
 		}
 		newHead.nextNode = head;
 		head = newHead;
+		System.out.println("added at head");
 	}
 	
-	public <T>void addAtPos(int data , int insertPosition) {
+	/**
+	 * Purpose: adding an element at the specified postion in the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
+	public <T>void addAtPos(T data , int insertPosition) {
 		if( listIsEmpty() ) {
 			return;
 		}
@@ -75,8 +130,15 @@ public class LinkedList<T>{
 		tempNode.nextNode = insertNode;
 	}
 	
-	public <T>void addAtEnd(int data) {
+	/**
+	 * Purpose: adding an element at the end of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
+	public <T>void addAtEnd(T data) {
 		if ( listIsEmpty() ) {
+			System.out.println("adding at head");
+			addAtHead(data);
 			return;
 		}
 		Node<T> insertNode = new Node<T>(data);
@@ -85,8 +147,14 @@ public class LinkedList<T>{
 			traversingNode = traversingNode.nextNode;
 		}
 		traversingNode.nextNode = insertNode;
+		System.out.println("added at end");
 	}
 	
+	/**
+	 * Purpose: deleting the head element of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
 	public <T>void deleteAtHead(){
 		if ( listIsEmpty() ) {
 			return;
@@ -94,6 +162,11 @@ public class LinkedList<T>{
 		head = head.nextNode;
 	}
 	
+	/**
+	 * Purpose: deleting the element at a particular position in the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
 	public <T>void deleteAtPos(int deletePosition){
 		if( listIsEmpty() ) {
 			return;
@@ -107,6 +180,11 @@ public class LinkedList<T>{
 		tempNode.nextNode = (tempNode.nextNode).nextNode;		
 	}
 
+	/**
+	 * Purpose: deleting the element at the end of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
 	public <T>void deleteAtEnd(){
 		if( listIsEmpty() ) {
 			return;
@@ -118,4 +196,213 @@ public class LinkedList<T>{
 		tempNode.nextNode = null;
 	}
 	
+	/**
+	 * Purpose: add all elements from a file
+	 * 
+	 * @param 	<T>				generic definition
+	 * @param 	inputArray		file elements stored in an array
+	 */
+	public <T>void addAll(T[] inputArray){
+		for(int i = 0 ; i < inputArray.length ; i++) {
+			System.out.println((i+1)+". adding all");
+			addAtEnd(inputArray[i]);
+		}
+	}
+	
+	/**
+	 * Purpose: search the list for a specific element
+	 * 
+	 * @param 	<T>				generic definition
+	 * @param 	dataToSearch	element to be searched
+	 * @throws	IOException		if file handling fails
+	 */
+	public <T>void searchNodeOL(T dataToSearch) throws IOException {
+		if ( listIsEmpty() ) {
+			return;
+		}
+		Node traversalNode = head;
+		int position = 1;
+		while( traversalNode != null ) {
+			if( (traversalNode.data).equals(dataToSearch) ) {
+				System.out.println("found at " + position );
+				return;
+			}
+			traversalNode = traversalNode.nextNode;
+			position++;
+			System.out.println("not present at " + position );
+		}
+		addAtEnd(dataToSearch);
+		File file = new File(pathForOrderedList);
+		FileWriter fr = new FileWriter(file, true);
+		BufferedWriter br = new BufferedWriter(fr);
+		String writeToFile = dataToSearch.toString()+ " ";
+		br.write(writeToFile);
+
+		br.close();
+		fr.close();
+	}
+	
+	/**
+	 * Purpose: search the list for a specific element
+	 * 
+	 * @param 	<T>				generic definition
+	 * @param 	dataToSearch	element to be searched
+	 * @throws	IOException		if file handling fails
+	 */
+	public <T>void searchNodeUL(T dataToSearch) throws IOException {
+		if ( listIsEmpty() ) {
+			return;
+		}
+		Node traversalNode = head;
+		int position = 1;
+		while( traversalNode != null ) {
+			if( (traversalNode.data).equals(dataToSearch) ) {
+				System.out.println("found at " + position );
+				return;
+			}
+			traversalNode = traversalNode.nextNode;
+			position++;
+			System.out.println("not present at " + position );
+		}
+		addAtEnd(dataToSearch);
+		File file = new File(pathForUnorderedList);
+		FileWriter fr = new FileWriter(file, true);
+		BufferedWriter br = new BufferedWriter(fr);
+		String writeToFile = dataToSearch.toString()+ " ";
+		br.write(writeToFile);
+
+		br.close();
+		fr.close();
+	}
+	
+	/**
+	 * Purpose: return the index of the specified element
+	 * 
+	 * @param 	<T>		generic definition
+	 * @param 	data	element to be found
+	 * @return			index of the element
+	 */
+	public <T>int indexOf(T data){
+		if ( listIsEmpty() ) {
+			System.out.println("no such list");
+			return -1;
+		}
+		Node traversalNode = head;
+		int position = 1;
+		while( traversalNode != null ) {
+			if( (traversalNode.data).equals(data) ) {
+				System.out.println("found at " + position );
+				return position;
+			}
+			traversalNode = traversalNode.nextNode;
+			position++;
+		}
+		System.out.println("not found in the list");
+		return -1;
+	}
+	
+	/**
+	 * Purpose: remove and return the last element of the list
+	 * 
+	 * @param 	<T>	generic definition
+	 */
+	public <T>T pop(){
+		if( listIsEmpty() ) {
+			System.out.println("nothing to pop!!");
+			return null;
+		}
+		Node traversingNode = head;
+		while((traversingNode.nextNode).nextNode != null){
+			traversingNode = traversingNode.nextNode;
+		}
+		Node found = traversingNode.nextNode;
+		traversingNode.nextNode = null;
+		return (T) found.data;
+	}
+	
+	/**
+	 * Purpose: remove and return the element at specified position
+	 *  
+	 * @param 	<T>			generic definition
+	 * @param 	position	position of the element that we want to pop
+	 * @return				element at the specified postion
+	 */
+	public <T>T pop(int position){
+		if( listIsEmpty() ) {
+			System.out.println("nothing to pop!!");
+			return null;
+		}
+		Node traversingNode = head;
+		int tempPos = 1;
+		while((tempPos+1) != position){
+			traversingNode = traversingNode.nextNode;
+		}
+		Node found = traversingNode.nextNode;
+		T dataToReturn = (T) found.data;
+		traversingNode.nextNode = found.nextNode;
+		return dataToReturn;
+	}
+	
+	/**
+	 * Purpose: add an element in the list after the specified element
+	 * 
+	 * @param 	<T>			generic definition
+	 * @param 	thisNode	the element after which we want to add the new element
+	 * @param 	data		the new element to be added
+	 */
+	public <T>void addAfter(Node thisNode, T data){
+		if (listIsEmpty()) {
+			return;
+		}
+		Node tempNode = head;
+		Node addNode = new Node<T>(data);
+		while(tempNode != thisNode ) {
+			tempNode = tempNode.nextNode;
+		}
+		addNode.nextNode = tempNode.nextNode;
+		tempNode.nextNode = addNode;
+	}
+	/**
+	 * Purpose: add an element to the list in sorted manner
+	 * 
+	 * @param 	<T>		generic definition
+	 * @param 	data	element to be added	
+	 */
+	public <T extends Comparable<T>>void addOrdered(T data){
+		if(listIsEmpty()) {
+			addAtHead(data);
+			return;
+		}
+		Node tempNode = head;
+		if(((Comparable<T>) head.data).compareTo(data) > 0) {
+			addAtHead(data);
+			return;
+		} 
+		while(tempNode != null && tempNode.nextNode != null) {
+			if(((Comparable<T>) tempNode.data).compareTo(data) == 0) { 
+				addAfter(tempNode,data);
+				return;
+			}
+			if(((Comparable<T>) tempNode.data).compareTo(data) < 0 
+					&& ((Comparable<T>) (tempNode.nextNode).data).compareTo(data) > 0) {
+				addAfter(tempNode,data);
+				return;
+			}
+			tempNode = tempNode.nextNode;
+		}
+		addAtEnd(data);
+	}
+
+	/**
+	 * Purpose: add all elements of a file to a list in sorted manner
+	 * 
+	 * @param: 	fileContents	data from file
+	 */
+	public void addAllOrdered(String fileContents) {
+		String[] tempArray = fileContents.split(" ");
+		int[] inputArray = new int[tempArray.length]; 
+		for(int i=0; i<inputArray.length; i++) {
+			addOrdered(Double.parseDouble(tempArray[i]));
+		}
+	}
 }
