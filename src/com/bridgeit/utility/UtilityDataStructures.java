@@ -20,7 +20,6 @@ public class UtilityDataStructures {
 	static Scanner sc = new Scanner(System.in);
 
 	private static double cashBalance = 0;
-	File fileOL = new File("/home/user/fileForOrderedList.txt");
 	
 	/**
 	 * Purpose: Read String from the user using Scanner class
@@ -74,10 +73,10 @@ public class UtilityDataStructures {
 	 * @return	file 
 	 * @throws IOException
 	 */
-	public static Scanner acceptFileUsingScanner() throws IOException {
+	public static Scanner acceptFileUsingScanner(String address) throws IOException {
 //		System.out.println("enter your file address: ");
 //		String fileAddress = readString();
-		Path inputPath = Paths.get("/home/user/file.txt");
+		Path inputPath = Paths.get(address);
 		Scanner file = new Scanner(inputPath);
 		return file;
 	}
@@ -117,8 +116,8 @@ public class UtilityDataStructures {
 	 * @return	buffered reader object for the file
 	 * @throws FileNotFoundException
 	 */
-	public static BufferedReader AcceptWithBuffReader() throws FileNotFoundException {
-		File fileOL = new File("/home/user/fileForOrderedList.txt");
+	public static BufferedReader AcceptWithBuffReader(String path) throws FileNotFoundException {
+		File fileOL = new File(path);
 		FileReader fr = new FileReader(fileOL);
 		BufferedReader br = new BufferedReader(fr);
 		return br;

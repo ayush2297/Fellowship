@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: Palindrome finder using Dequeue
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   31-10-2019
+ *
+ ******************************************************************************/
 package com.bridgeit.datastructures;
 
 import com.bridgeit.utility.UtilityAlgorithms;

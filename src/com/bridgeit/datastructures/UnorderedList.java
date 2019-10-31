@@ -23,7 +23,8 @@ public class UnorderedList {
 
 	public static void main(String[] args) throws IOException {
 		LinkedList<String> list = new LinkedList<String>();
-		Scanner inputFile = UtilityDataStructures.acceptFileUsingScanner();
+		String path = "/home/user/example.txt";
+		Scanner inputFile = UtilityDataStructures.acceptFileUsingScanner(path);
 		//UtilityDataStructures.showFileContents(inputFile);
 		String contentsOfFile = UtilityDataStructures.readFileContents(inputFile);
 		System.out.println(contentsOfFile);

@@ -19,7 +19,8 @@ public class OrderedList {
 
 	public static void main(String[] args) throws IOException {
 		LinkedList<Double> list = new LinkedList<Double>();
-		BufferedReader br = UtilityDataStructures.AcceptWithBuffReader();
+		String path = "/home/user/fileForOrderedList.txt";
+		BufferedReader br = UtilityDataStructures.AcceptWithBuffReader(path);
 		String fileContents = UtilityDataStructures.ReadWithBuffReader(br);
 		System.out.println(fileContents);
 		list.addAllOrdered(fileContents);

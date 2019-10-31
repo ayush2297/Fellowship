@@ -17,9 +17,19 @@ import org.w3c.dom.ls.LSInput;
 
 public class LinkedList<T>{
 	
+	static int outer = 1;
+	static int inner = 1;
+	
 	Node<T> head;
 	String pathForUnorderedList = "/home/user/file.txt";
 	String pathForOrderedList = "/home/user/fileForOrderedList.txt";
+	
+	public <T> LinkedList() {
+		System.out.println("creating inner list :"+(outer++));
+	}
+	public <T> LinkedList(boolean b) {
+		System.out.println("creating Outer list :"+(inner++));
+	}
 
 	/**
 	 * Purpose: to check if given list has any elements in it
@@ -82,7 +92,25 @@ public class LinkedList<T>{
 		return size;
 	}
 	
-	
+	/**
+	 * Purpose: get the element from the specified position in the list
+	 * 
+	 * @param 	<T>				generic definition
+	 * @param 	position		element position given by user
+	 * @return					element at the position
+	 */
+	public <T> Node returnNode(int position) {
+		if( listIsEmpty() ) {
+			return null;
+		}
+		int currPos = 0;
+		Node traverse = head;
+		while( currPos < position) {
+			traverse = traverse.nextNode;
+			currPos++;
+		}
+		return traverse;
+	}
 	/**
 	 * Purpose: displaying all elements of the list
 	 * 
@@ -145,7 +173,7 @@ public class LinkedList<T>{
 	 */
 	public <T>void addAtEnd(T data) {
 		if ( listIsEmpty() ) {
-			System.out.println("adding at head");
+//			System.out.println("adding at head");
 			addAtHead(data);
 			return;
 		}
@@ -236,6 +264,72 @@ public class LinkedList<T>{
 	}
 	
 	/**
+	 * Purpose: find and delete the element from the list
+	 * 
+	 * @param 	<T>					generic definition
+	 * @param 	valueToDelete		delete this element fromthe list	
+	 */
+	public <T> void deleteElement(T valueToDelete) {
+		if(head.data == valueToDelete) {
+			head = head.nextNode;
+			return;
+		}
+		Node tempNode = head;
+		while((tempNode.nextNode).data != valueToDelete 
+				&& tempNode.nextNode != null) {
+			tempNode = tempNode.nextNode;
+		}
+		tempNode.nextNode = (tempNode.nextNode).nextNode;
+	}
+	
+	/**
+	 * Purpose: deletes the element if found in the map, else adds it to the map
+	 * 
+	 * @param 	<T>					generic definition
+	 * @param 	valueToSearch		search for this element
+	 * @return						true - if element is found 
+	 * 								false - if element not found			
+	 */
+	public <T> boolean popIfFound(T valueToSearch) {
+		if(searchElement(valueToSearch)) {
+			deleteElement(valueToSearch);
+			return true;
+		} else {
+			System.out.println("no such element present.. "
+					+ "added the element to the list");
+			return false;
+		}
+	}
+	
+	/**
+	 * Purpose: check whether element is present in the map 
+	 *  
+	 * @param 	<T>					generic definition
+	 * @param 	valueToSearch		search for this element
+	 * @return						true - if element is found
+	 * 								false - if element not found
+	 */
+	public <T> boolean searchElement(T valueToSearch) {
+		if ( listIsEmpty() ) {
+			addAtEnd(valueToSearch);
+			return false;
+		}
+		Node traversalNode = head;
+		int position = 1;
+		while( traversalNode != null ) {
+			if( (traversalNode.data).equals(valueToSearch) ) {
+				System.out.println("found at " + position+ " and popped out!" );
+				return true;
+			}
+			traversalNode = traversalNode.nextNode;
+			position++;
+//			System.out.println("not present at " + position );
+		}
+		addOrdered((Comparable)valueToSearch);
+		return false;
+	}
+	
+	/**
 	 * Purpose: add all elements from a file
 	 * 
 	 * @param 	<T>				generic definition
@@ -248,6 +342,12 @@ public class LinkedList<T>{
 		}
 	}
 	
+	/**
+	 * Purpose: add an element in the list
+	 * 
+	 * @param 	<T>			generic definition
+	 * @param 	data		value to be added
+	 */
 	public <T>void add(T data){
 		addAtEnd(data);
 	}
@@ -316,6 +416,39 @@ public class LinkedList<T>{
 
 		br.close();
 		fr.close();
+	}
+	
+	/**
+	 * Purpose: search the list for a specific element
+	 * 
+	 * @param 	<T>				generic definition
+	 * @param 	dataToSearch	element to be searched
+	 * @throws	IOException		if file handling fails
+	 */
+	public <T>void searchNodeMap(T dataToSearch) throws IOException {
+		if ( listIsEmpty() ) {
+			return;
+		}
+		Node traversalNode = head;
+		int position = 1;
+		while( traversalNode != null ) {
+			if( (traversalNode.data).equals(dataToSearch) ) {
+				System.out.println("found at " + position );
+				return;
+			}
+			traversalNode = traversalNode.nextNode;
+			position++;
+			System.out.println("not present at " + position );
+		}
+		addAtEnd(dataToSearch);
+//		File file = new File(pathForUnorderedList);
+//		FileWriter fr = new FileWriter(file, true);
+//		BufferedWriter br = new BufferedWriter(fr);
+//		String writeToFile = dataToSearch.toString()+ " ";
+//		br.write(writeToFile);
+//
+//		br.close();
+//		fr.close();
 	}
 	
 	/**
