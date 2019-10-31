@@ -89,7 +89,7 @@ public class UtilityDataStructures {
 	 */
 	public static String readFileContents(Scanner inputFile) {
 		String allFileContents = "";
-	    sc.useDelimiter(" ");
+	    inputFile.useDelimiter(" ");
 		while(inputFile.hasNext()) {
 			allFileContents += inputFile.next() + " " ;
 			//System.out.println(allFileContents);
@@ -170,6 +170,9 @@ public class UtilityDataStructures {
 		}
 	}
 
+	/**
+	 * Purpose: perform bank counter operations using queue
+	 */
 	public static void startBankCounter() {
 		Queue q = new Queue();
 		int choice ;
@@ -206,6 +209,11 @@ public class UtilityDataStructures {
 		}while( choice != 4);
 	}
 
+	/**
+	 * Purpose: Process the request of the customer on the bank counter
+	 *
+	 * @param 	custToProcess		customer on the front of the queue
+	 */
 	private static void processCustomer(int custToProcess) {
 		int custChoice;
 		do {
@@ -235,6 +243,13 @@ public class UtilityDataStructures {
 		}while( custChoice!= 3);
 	}
 
+	/**
+	 * Purpose: check if the given string is palindrome using dequeue
+	 * 
+	 * @param 		strToCheck		string to be checked for palindrome properties
+	 * @return						true - if string is palindrome
+	 *								false - if string is not a palindrome
+	 */
 	public static boolean isPalindrome(String strToCheck) {
 		Dequeue<Character> dq = new Dequeue<Character>();
 		for(int i = 0 ; i < strToCheck.length() ; i++) {
@@ -249,6 +264,30 @@ public class UtilityDataStructures {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Purpose: find max ways a BST can be built for given number of nodes
+	 *
+	 * @param 	numberOfNodes		number of nodes in the BST
+	 * @return						max ways to build the BST
+	 */
+	public static int findBstPossibilities(int numberOfNodes) {
+		UtilityAlgorithms util = new UtilityAlgorithms();
+		int possibilities = util.factorial(numberOfNodes*2)/
+				(util.factorial(numberOfNodes+1)*util.factorial(numberOfNodes));
+		return possibilities;
+	}
+
+	public static void formCalendar(int monthStartDay, int month, int year) {
+		int maxDays = 0;
+		if(UtilityFunctional.isLeap(year)){
+			if(month == 2){
+				maxDays = 29;
+				
+				PrintCalendar(monthStartDay,maxDays);
+			}
+		}
 	}
 
 }

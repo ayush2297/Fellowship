@@ -136,7 +136,7 @@ public class UtilityFunctional {
 	 * @return				true - if it is leap year 
 	 * 						false - if it is not a leap year
 	 */
-	public boolean isLeap(int year) {
+	public static boolean isLeap(int year) {
 		if(year%4==0 && year%100!=0)
 			return true;
 		return false;
