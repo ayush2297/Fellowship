@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+import com.brdigeit.structures.Dequeue;
 import com.brdigeit.structures.Queue;
 import com.brdigeit.structures.Stack;
 
@@ -185,7 +186,7 @@ public class UtilityDataStructures {
 				break;
 			case 2: 
 				System.out.println("customer accepted at counter: ");
-				int custToProcess = q.dequeue();
+				int custToProcess = (int) q.dequeue();
 				if(custToProcess==-1) {
 					System.out.println("no more customers");
 					return;
@@ -233,6 +234,22 @@ public class UtilityDataStructures {
 				break;
 			}
 		}while( custChoice!= 3);
+	}
+
+	public static boolean isPalindrome(String strToCheck) {
+		Dequeue<Character> dq = new Dequeue<Character>();
+		for(int i = 0 ; i < strToCheck.length() ; i++) {
+			char temp = strToCheck.charAt(i);
+			dq.addFront(temp);
+		}
+		while(dq.size() > 1) {
+			char front = dq.deleteFront();
+			char end = dq.deleteRear();
+			if(front != end) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

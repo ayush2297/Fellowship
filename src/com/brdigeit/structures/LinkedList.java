@@ -171,6 +171,19 @@ public class LinkedList<T>{
 	}
 	
 	/**
+	 * Purpose: deleting the head element of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
+	public <T>T deleteNreturnHead(){
+		if ( listIsEmpty() ) {
+			return null;
+		}
+		Node tempHead = head;
+		head = head.nextNode;
+		return (T)tempHead;
+	}
+	/**
 	 * Purpose: deleting the element at a particular position in the list
 	 * 
 	 * @param 	<T>		generic definition
@@ -202,6 +215,24 @@ public class LinkedList<T>{
 			tempNode = tempNode.nextNode;
 		}
 		tempNode.nextNode = null;
+	}
+	
+	/**
+	 * Purpose: deleting the element at the end of the list
+	 * 
+	 * @param 	<T>		generic definition
+	 */
+	public <T>T deleteNreturnEnd(){
+		if( listIsEmpty() ) {
+			return null;
+		}
+		Node tempNode = head;
+		while ( hasNext(tempNode.nextNode) ) {
+			tempNode = tempNode.nextNode;
+		}
+		Node temp = tempNode.nextNode;
+		tempNode.nextNode = null;
+		return (T)temp;
 	}
 	
 	/**

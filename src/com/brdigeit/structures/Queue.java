@@ -36,13 +36,13 @@ public class Queue <T>{
 	 * @param 	<T>		generic definition
 	 * @return			element at the front of the queue
 	 */
-	public <T>int dequeue(){
+	public <T>T dequeue(){
 		if(isEmpty())
-			return -1;
+			return null;
 		Node temp = list.head;
 		list.deleteAtHead();
 		size--;
-		return (int) temp.data;
+		return (T) temp.data;
 	}
 	
 	public int size() {
