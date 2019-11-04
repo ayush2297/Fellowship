@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: Dequeue using Linked List 
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since   2-11-2019
+ *
+ ******************************************************************************/
 package com.brdigeit.structures;
 
 public class Dequeue <T>{

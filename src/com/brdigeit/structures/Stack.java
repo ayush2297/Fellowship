@@ -27,7 +27,7 @@ public class Stack<T> {
 	 * 
 	 * @param 	tokenizedExpression	element to be pushed into the stack
 	 */
-	public void push(char tokenizedExpression) {
+	public <T>void push(T tokenizedExpression) {
 		list.addAtHead(tokenizedExpression);
 		size++;
 	}

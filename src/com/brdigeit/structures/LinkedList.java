@@ -25,10 +25,10 @@ public class LinkedList<T>{
 	String pathForOrderedList = "/home/user/fileForOrderedList.txt";
 	
 	public <T> LinkedList() {
-		System.out.println("creating inner list :"+(outer++));
+//		System.out.println("creating inner list :"+(outer++));
 	}
 	public <T> LinkedList(boolean b) {
-		System.out.println("creating Outer list :"+(inner++));
+//		System.out.println("creating Outer list :"+(inner++));
 	}
 
 	/**

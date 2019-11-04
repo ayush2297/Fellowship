@@ -1,6 +1,5 @@
 package com.bridgeit.utility;
 
-import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,12 +12,15 @@ import java.util.Scanner;
 import com.brdigeit.structures.Dequeue;
 import com.brdigeit.structures.Queue;
 import com.brdigeit.structures.Stack;
+import com.brdigeit.structures.Week;
+import com.brdigeit.structures.WeekDay;
 
 
 public class UtilityDataStructures {
 
 	static Scanner sc = new Scanner(System.in);
-
+	static UtilityFunctional utility = new UtilityFunctional();
+	
 	private static double cashBalance = 0;
 	
 	/**
@@ -174,7 +176,7 @@ public class UtilityDataStructures {
 	 * Purpose: perform bank counter operations using queue
 	 */
 	public static void startBankCounter() {
-		Queue q = new Queue();
+		Queue<Integer> q = new Queue<Integer>();
 		int choice ;
 		int custNo = 0;
 		do {
@@ -274,20 +276,202 @@ public class UtilityDataStructures {
 	 */
 	public static int findBstPossibilities(int numberOfNodes) {
 		UtilityAlgorithms util = new UtilityAlgorithms();
+		@SuppressWarnings("static-access")
 		int possibilities = util.factorial(numberOfNodes*2)/
 				(util.factorial(numberOfNodes+1)*util.factorial(numberOfNodes));
 		return possibilities;
 	}
 
-	public static void formCalendar(int monthStartDay, int month, int year) {
-		int maxDays = 0;
-		if(UtilityFunctional.isLeap(year)){
-			if(month == 2){
-				maxDays = 29;
-				
-				PrintCalendar(monthStartDay,maxDays);
+	/**
+	 * @param startOfMonth
+	 * @param month
+	 * @param year
+	 */
+	public static void buildCalendar(int startOfMonth, int month, int year) {
+		int daysInMonth = findDaysInMonth(month,year);
+		int rows;
+		if(daysInMonth+startOfMonth <= 35) {
+			rows = 5;
+		}else {
+			rows = 6;
+		}
+		System.out.println("\t\t"+getMonth(month)+" "+ year);
+		formCalendar(rows, startOfMonth, daysInMonth);
+	}
+	
+	
+	
+	/**
+	 * Purpose: Get the month name
+	 * 
+	 * @param 	month		month in mm
+	 * @return				month in string 
+	 */
+	private static String getMonth(int month) {
+		String [] monthNames = {"JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE",
+				"JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
+		return monthNames[month-1];
+	}
+
+	/**
+	 * Purpose: start calender building 
+	 * 	
+	 * @param 	rows			number of rows to build calender
+	 * @param 	startOfMonth	day on which month starts
+	 * @param 	daysInMonth		number of days in the month
+	 */
+	private static void formCalendar(int rows, int startOfMonth, int daysInMonth) {
+		int calendarFormat[][] = new int[rows][7];
+		int count = 1;
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < 7 && count <= daysInMonth ; j++) {
+				if(i ==0) {
+					if(j >= startOfMonth) {
+						calendarFormat[i][j] = count++;
+					}else {
+						continue;
+					}
+				}
+				else {
+					calendarFormat[i][j] = count++;
+				}
 			}
+		}
+		System.out.println("\nSun\tMon\tTue\tWed\tThu\tFri\tSat");
+		for(int i =0;i<rows;i++) {
+			for(int j=0; j < 7; j++) {
+				if(calendarFormat[i][j] == 0) {
+					System.out.print("\t");
+				}else {
+					System.out.print(calendarFormat[i][j]+"\t");
+				}
+			}
+			System.out.println();
 		}
 	}
 
+	/**
+	 * Purpose: To find number of days in the month 
+	 * 
+	 * @param 	month	month in mm
+	 * @param 	year	year in yyyy
+	 * @return			number of days in the month
+	 */
+	private static int findDaysInMonth(int month, int year) {
+		int days;
+		if(month < 7) {
+			if(month == 2) {
+				if(UtilityFunctional.isLeap(year)) {
+					return days = 29;
+				}
+				else {
+					return days = 28;
+				}
+			}
+			if(month %2 != 0) {
+				return days = 31;
+			}
+			else {
+				return days = 30;
+			}
+		}
+		else {
+			if(month %2 !=0 ) {
+				return days = 30;
+			}
+			else {
+				return days = 31;
+			}
+		}
+	}
+	
+	/**
+	 * Purpose: form calendar using queue
+	 * 
+	 * @param 	month		month in mm
+	 * @param 	year		year in yyyy
+	 */
+	public static void formMonth(int month, int year) {
+		int startDate = UtilityAlgorithms.dayOfWeek(month, 1, year);
+		int noOfdaysInMonth = findDaysInMonth(month, year);
+		int tempMax = noOfdaysInMonth+7;
+		int startCal = 1;
+		Queue<Week> singleWeek = new Queue<Week>();
+		while(startCal<=tempMax) {
+			Week addWeek = new Week(startCal, month, year,noOfdaysInMonth);
+			singleWeek.enqueue(addWeek);
+			if(startCal == 1) {
+				startCal = startCal + (7-startDate);
+				continue;
+			}
+			startCal = startCal+7;
+		}
+		
+		showCalendar(singleWeek);
+	}
+
+	/**
+	 * Purpose: display calendar
+	 * 
+	 * @param 	singleWeek		Queue containing all weeks
+	 */
+	private static void showCalendar(Queue<Week> singleWeek) {
+		System.out.println("Sun\tMon\tTues\tWed\tThurs\tFri\tSat");
+		while(!singleWeek.isEmpty()) {
+			Week week = singleWeek.dequeue();
+			Queue<WeekDay> dayQ = week.singleDay;
+			while(!dayQ.isEmpty()) {
+				WeekDay data = (WeekDay) dayQ.dequeue();
+				if(data.date!=0)
+					System.out.print(data.date+"\t");
+				else
+					System.out.print("\t");
+			}
+			System.out.println();
+		}
+	}
+
+	/**
+	 * Purpose: form a calender using stack
+	 * 
+	 * @param 	month		month in mm
+	 * @param 	year		year in yyyy
+	 */
+	public static void formCalendarStack(int month, int year) {
+		int noOfdaysInMonth = findDaysInMonth(month, year);
+		int endDay = UtilityAlgorithms.dayOfWeek(month, noOfdaysInMonth, year);
+		int tempMin = -7;
+		int currDate = noOfdaysInMonth;
+		Stack<Week> singleWeekStack = new Stack<Week>();
+		while(currDate>=tempMin) {
+			Week addWeek = new Week(currDate, noOfdaysInMonth, month, year,true);
+			singleWeekStack.push(addWeek);
+			if(currDate == noOfdaysInMonth) {
+				currDate = currDate - endDay;
+				continue;
+			}
+			currDate = currDate - 7;
+		}
+		
+		showCalendarStack(singleWeekStack);
+		
+	}
+
+	/**
+	 * Purpose: display calendar built with stack
+	 * 
+	 * @param 	singleWeekStack		stack containing a particular week
+	 */
+	private static void showCalendarStack(Stack<Week> singleWeekStack) {
+		System.out.println("Sun\tMon\tTues\tWed\tThur\tFri\tSat");
+		while(!singleWeekStack.isEmpty()) {
+			Week week = singleWeekStack.pop();
+			Stack<WeekDay> dayStack = week.singleDayStack;
+			while(!dayStack.isEmpty()) {
+				
+				System.out.print((dayStack.pop()).date+"\t");
+			}	
+			System.out.println();
+		}
+	}
 }

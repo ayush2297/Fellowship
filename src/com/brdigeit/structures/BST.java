@@ -1,3 +1,11 @@
+/******************************************************************************
+ *  Purpose: Binary Search Tree structure 
+ *
+ *  @author  Ayush Saraf
+ *  @version 1.0
+ *  @since  1-11-2019
+ *
+ ******************************************************************************/
 package com.brdigeit.structures;
 
 public class BST <T>{
