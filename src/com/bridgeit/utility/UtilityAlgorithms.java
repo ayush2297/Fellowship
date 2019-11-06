@@ -8,6 +8,8 @@
  ******************************************************************************/
 package com.bridgeit.utility;
 
+import com.brdigeit.structures.Queue;
+import com.brdigeit.structures.Stack;
 import com.bridgeit.algorithms.MergeSort;
 import com.bridgeit.utility.UtilityFunctional;
 import java.io.File;
@@ -26,6 +28,9 @@ public class UtilityAlgorithms {
 	static Scanner sc = new Scanner(System.in);
 	static int []  notes = {1000,500,100,50,20,10,5,2,1};
 	static File file = new File("/home/user/example.txt");
+	
+	public static Stack<Integer[]> anagramStack = new Stack<Integer[]>();
+	public static Queue<Integer[]> anagramQueue = new Queue<Integer[]>();
 	
 	/**
 	 * Purpose: Read String from the user using Scanner class
@@ -209,14 +214,29 @@ public class UtilityAlgorithms {
 	public static void primeAnagrams(int[] primeArray) {
 		System.out.println();
 		System.out.println("anagrams amongs all the obtained prime numbers are: \n");
-		for (int i = 0; i < primeArray.length - 1 && primeArray[i] != 0; i++) {
+		for (Integer i = 0; i < primeArray.length - 1 && primeArray[i] != 0; i++) {
 			String original = Integer.toString(primeArray[i]);
-			for (int j = i + 1; j < primeArray.length && primeArray[j] != 0; j++) {
+			for (Integer j = i + 1; j < primeArray.length && primeArray[j] != 0; j++) {
 				String checkAnagram = Integer.toString(primeArray[j]);
+				Integer [] prime = new Integer [2];
 				if (checkAnagram(original, checkAnagram)) {
 					System.out.println(original + " and " + checkAnagram + " are anagrams");
+					prime[0] = primeArray[i];
+					prime[1] = primeArray[j];
+					anagramStack.push(prime);
+					anagramQueue.enqueue(prime);
 				}
 			}
+		}
+		System.out.println("\n\nprinting anagrams in reverse using stack: \n");
+		while(!anagramStack.isEmpty()) {
+			Integer[] prime =anagramStack.pop();
+			System.out.println(prime[0]+" and "+prime[1]+" are anagrams");
+		}
+		System.out.println("\n\nprinting anagrams from queue: \n");
+		while(!anagramQueue.isEmpty()) {
+			Integer[] prime = anagramQueue.dequeue();
+			System.out.println(prime[0]+" and "+prime[1]+" are anagrams");
 		}
 	}
 
@@ -227,7 +247,7 @@ public class UtilityAlgorithms {
 	 */
 	public static void primePalindromes(int[] primeArray) {
 		System.out.println();
-		System.out.println("following are the palindromes : ");
+		System.out.println("\nfollowing are the palindromes : ");
 		for (int i = 0; i < primeArray.length; i++) {
 			String numberToString = Integer.toString(primeArray[i]);
 			if (checkPalindrome(numberToString)) {
